@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cmath>
+#include <vector>
+using namespace std;
+
+class solution
+{
+    public :
+    int countPrime(int n)
+    {
+        int cnt=0;
+        vector<int>Prime(n+1,true);
+        Prime[0]=Prime[1]=false;
+        for (int i=2;i<n;i++)
+        {
+            if (Prime[i])
+            {
+                cnt++;
+                for (int j=2*i;j<n;j+=i)
+                Prime[j]=false;
+            }
+        }return cnt;
+    }
+};
+int main()
+{
+    solution ob;
+    cout<<"enter the number n"<<endl;
+    int n;
+    cin>>n;
+    int primeCount=ob.countPrime(n);
+    cout<<"count of prime numbers less than n="<<n<<"is "<<primeCount<<endl;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
