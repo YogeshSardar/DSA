@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+    int arr[10]={2999,4,6,7,9};
+    cout<<"address of first memory block is "<<arr<<endl;
+    cout<<"address of first memory block is "<<&arr[0]<<endl;\
+    
+    
+    
+    
+     
+    cout<<"address of first memory block is "<<*arr<<endl;
+    cout<<"address of first memory block is "<<*arr+10<<endl;
+    cout<<"output =="<<*(arr+2)<<endl;
+    int i=3;
+    cout<<i[arr]<<endl;
+    int temp[10];
+    cout<<"size of temp is "<<sizeof(temp)<<endl;
+    
+    
+    
+    
+    int *ptr=&temp[10];
+    cout<<"size of pointer"<<sizeof (ptr)<<endl;
+     cout<<"size of pointer"<<sizeof (*ptr)<<endl;
+     cout<<"size of add of  pointer"<<sizeof (&ptr)<<endl;
+    
+    
+    
+    
+    int arrr[10]={0};
+     
+     
+    // // 
+    // int arr[10];
+    // arr=arr+1;
+    // cout <<arr<<endl;
+    
+    
+    
+    
+    // it will shift it by one block 
+    // in case of pointer but not in case of arr
+    int *ptrr =&arrr[0];
+    cout<<ptrr<<endl;
+    ptrr=ptrr+1;
+    cout<<ptrr<<endl; 
+    
+    
+    return 0;
+}  
