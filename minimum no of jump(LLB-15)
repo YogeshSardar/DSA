@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int minJumps(int arr[], int n) {
+        if (n <= 1) {
+            return 0;  // Already at the end or no elements
+        }
+        
+        int jump = 0;
+        int maxReach = arr[0];
+        int steps = arr[0];
+        
+        for (int i = 1; i < n; i++) {
+            if (i == n - 1) {
+                return jump + 1;  // Reached the last index, return the number of jumps
+            }
+            
+            maxReach = max(maxReach, i + arr[i]);
+            steps--;
+            
+            if (steps == 0) {
+                jump++;
+                
+                if (i >= maxReach) {
+                    return -1;  // Cannot reach the end from the current position
+                }
+                
+                steps = maxReach - i;
+            }
+        }
+        
+        return -1;  // Cannot reach the end of the array
+    }
+};
