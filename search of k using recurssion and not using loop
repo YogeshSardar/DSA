@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+bool search(int arr[],int size,int k)
+{
+    // base case
+    if (size==0){
+    return false;}
+    
+    if (arr[0]==k)
+    {
+       return true;
+    }else
+    {
+        
+        return search (arr+1,size-1,k);
+    
+    }
+    
+    
+}
+
+int main()
+{
+    int n=5; 
+    int arr[5]={1,2,3,4,5};
+    bool ans=search(arr,5,900);
+    if (ans)
+    {
+        cout<<"present "<<endl;
+    }else
+    {
+        cout<<"absent";
+    }
+    return 0;
+}
