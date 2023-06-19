@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+int suum(int arr[],int i,int n)
+{
+ 
+    // base case
+    if (i>=n)
+    {
+        return 0;
+    }
+    
+    int sum=arr[i]+suum(arr,i+1,n);
+    return sum;
+}
+int main()
+{
+    int n=5;
+
+ int arr[n]={1,2,3,4,5};
+ int ans =suum(arr,0,5);
+ cout<<ans;
+}
