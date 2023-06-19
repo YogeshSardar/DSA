@@ -1,0 +1,18 @@
+#include<iostream>
+using namespace std;
+string reversestr(string s,int i ,int j)
+{
+    // base case
+    if(i>j)
+    return s ;
+    swap(s[i],s[j]);
+    i++;
+    j--;
+    return reversestr(s,i,j);
+}
+int main()
+{
+    string s="yogesh";
+    string ans=reversestr(s,0,5);
+    cout<<ans;
+}
