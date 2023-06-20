@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+int power(int n,int m)
+{
+    // base case
+    if (m==0)
+    return 1;
+    if (m==1)
+    return n;
+    
+    int ans=power(n,m/2);
+    
+    if (m&1)
+    {
+        return n*ans*ans;
+    }
+    else{
+        return ans*ans;
+    }
+
+}
+
+
+int main()
+{
+    int n;
+    cin>>n;
+    int p=power(n,10);
+    cout<<p<<endl;
+    
+}
