@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isPalindrome(const string& str, int index) {
+    int length = str.length();
+    // Base case: If index reaches the middle of the string, it's a palindrome
+    if (index >= length / 2) {
+        return true;
+    }
+    
+    // Recursive case: Check if the characters at the current index and its corresponding mirrored index are equal
+    // If they are not equal, it's not a palindrome
+    if (str[index] != str[length - index - 1]) {
+        return false;
+    }
+    
+    // Recursive case: Move the index inward and check the remaining substring
+    return isPalindrome(str, index + 1);
+}
+
+int main() {
+    string str;
+    cout << "Enter a string: ";
+    cin >> str;
+
+    if (isPalindrome(str, 0)) {
+        cout << "The string is a palindrome." << endl;
+    } else {
+        cout << "The string is not a palindrome." << endl;
+    }
+
+    return 0;
+}
