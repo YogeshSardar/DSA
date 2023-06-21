@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class Solution {
+public:
+    int maxProfit(int prices[], int n) {
+        int maxprofit = 0;
+        int minprice = prices[0];
+
+        for (int i = 1; i < n; i++) {
+            minprice = min(prices[i], minprice);
+            int profit = prices[i] - minprice;
+            maxprofit = max(profit, maxprofit);
+        }
+
+        return maxprofit;
+    }
+};
+
+int main() {
+    int prices[6] = {7,1,5,3,6,4};
+    int n = 6 ;
+
+    Solution s;
+    int a = s.maxProfit(prices, n);
+    cout << a;
+
+    return 0;
+}
