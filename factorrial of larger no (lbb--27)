@@ -1,0 +1,32 @@
+class Solution {
+    public:
+    void calculateFactorial(int N, vector<int>& result) {
+        if (N == 0 || N == 1) {
+            result.push_back(1);
+            return;
+        }
+        
+        calculateFactorial(N - 1, result);
+        
+        int carry = 0;
+        for (int i = result.size() - 1; i >= 0; i--) {
+            int product = result[i] * N + carry;
+            result[i] = product % 10;
+            carry = product / 10;
+        }
+        
+        while (carry != 0) {
+            result.insert(result.begin(), carry % 10);
+            carry /= 10;
+        }
+    }
+public:
+    vector<int> factorial(int N){
+
+        vector<int> result;
+        calculateFactorial(N, result);
+        return result;
+    }
+
+
+};
