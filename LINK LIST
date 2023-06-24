@@ -6,10 +6,23 @@ class Node
     int data;
     Node*next;
     // constructor
-    Node(int data)
+    Node(int val)
     {
-        this ->data=data;
+        this ->data=val;
         this->next=NULL;
+        
+    }
+    // destructor
+    ~Node()
+    {
+        int value=this->data;
+        if (this->next!=NULL)
+        {
+            delete next;
+            this ->next=NULL;
+            
+            
+        }cout<<"memory is free for node with data"<<value<<endl;
         
     }
 };
@@ -42,6 +55,83 @@ void print (Node *&head)
     }cout<<endl;
     
 }
+
+
+void deletNode(int position,Node* &head)
+{
+    // deleting 1st or start node
+    if (position==1)
+    {
+        Node*temp=head;
+        
+        
+        head=head->next;
+        // memory free start node ki
+        temp->next=NULL;
+        
+        delete temp;
+        
+        
+    }
+    else
+    {
+        // deleting any middel and last node
+        Node* curr=head;
+        Node*prev=NULL;
+        
+        int cnt=1;
+        while(cnt<position)
+        {
+            prev=curr;
+            curr=curr->next;
+            cnt++;
+             
+        }
+        
+        prev->next=curr ->next;
+        curr->next;
+        
+        delete curr;
+        
+    }
+}
+
+
+// deletion
+
+ 
+void (InsertAtPosition (Node* &tail,Node* &head,int position ,int d))
+{
+    // inseeart at start
+    
+    if (position==1)
+    {
+        InsertAtHead(head,d);
+        return ;
+    }
+    Node *temp=head;
+    int cnt=1;
+    while(cnt<position-1)
+    {
+        temp=temp->next;
+        cnt++;
+        
+    }
+    if (temp->next==NULL)
+    {
+        InsertAtTail(tail,d);
+        return ;
+    }
+    // creating a new node for d
+    Node* nodeToInsert=new Node(d);
+    
+    
+    nodeToInsert->next=temp->next;
+    
+    temp->next=nodeToInsert;
+    
+    
+}
 int main()
 {
     // created a new Node 
@@ -56,4 +146,15 @@ Node *tail=node1;
 print(head);
     InsertAtTail(tail,12);
     print (tail);
+    
+    InsertAtPosition(tail,head,1,17);
+    print(head);
+    cout<<"head =="<<head->data<<endl;
+    cout<<"tail =="<<tail->data<<endl;
+    
+    deletNode(1,head);
+    print (head);
+    
+    
 }
+
