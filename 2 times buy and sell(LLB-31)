@@ -1,0 +1,31 @@
+int maxProfit(vector<int>&price){
+    
+    int n = price.size();
+    if (n < 4) {
+        // If the number of elements is less than 4,
+        // it's not possible to perform two transactions.
+        return 0;
+    }
+    
+    vector<int> firstTransaction(n, 0); // Maximum profit from the first transaction
+    vector<int> secondTransaction(n, 0); // Maximum profit from the second transaction
+
+    int minPrice = price[0];
+    for (int i = 1; i < n; i++) {
+        minPrice = min(minPrice, price[i]);
+        firstTransaction[i] = max(firstTransaction[i - 1], price[i] - minPrice);
+    }
+
+    int maxPrice = price[n - 1];
+    for (int i = n - 2; i >= 0; i--) {
+        maxPrice = max(maxPrice, price[i]);
+        secondTransaction[i] = max(secondTransaction[i + 1], maxPrice - price[i]);
+    }
+
+    int maxProfit = 0;
+    for (int i = 0; i < n; i++) {
+        maxProfit = max(maxProfit, firstTransaction[i] + secondTransaction[i]);
+    }
+
+    return maxProfit;
+}
