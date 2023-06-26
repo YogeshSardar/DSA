@@ -1,0 +1,33 @@
+
+string isSubset(int a1[], int a2[], int n, int m) {
+    int i=0;
+    int j=0;
+    
+    // Sort both the arrays
+    sort(a1, a1 + m);
+    sort(a2, a2 + n);
+    
+    
+    
+    // / Iterate till they do not exceed their sizes
+    while (i < n && j < m) {
+        // If the element is smaller then
+        // Move ahead in the first array
+        if (a1[j] < a2[i])
+            j++;
+        // If both are equal, then move
+        // both of them forward
+        else if (a1[j] == a2[i]) {
+            j++;
+            i++;
+        }
+ 
+        // If we do not have an element smaller
+        // or equal to the second array then break
+        else if (a1[j] > a2[i])
+            return "No";
+    }
+ 
+    return (i < n) ? "No" : "Yes";
+}
+ 
