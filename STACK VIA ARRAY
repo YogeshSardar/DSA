@@ -1,0 +1,77 @@
+#include<iostream>
+#include<stack>
+using namespace std;
+class mstack{
+    // property
+    public:
+    int *arr;
+    int top;
+    int size;
+    
+    // behaviour
+    mstack(int size)
+    {
+        this ->size=size;
+        arr=new int [size];
+        top=-1;
+    }
+    // Push
+    void push(int element)
+    {
+        if (size-top>1){
+        top++;
+        arr[top]=element;
+    }else
+    {
+        cout<<"Stack Overflow";
+    }
+    }
+    // pop
+    void pop()
+    {
+        if (top>=0)
+        {
+        top--;
+        }else
+        {
+            cout<<"stack underflow"<<endl;
+        }
+    }
+    int peek()
+    {
+        if (top>=0 && top<size){
+        return arr[top];
+    }else
+    {
+        cout<<"stack is empty "<<endl;
+        return -1;
+    }
+    }
+};
+
+int main()
+{
+    // // cretation of stack
+    // stack<int>s;
+    // // push operation
+    // s.push(2);
+    // s.push(3);
+    
+    
+    // // pop
+    // // s.pop();
+    // cout<<"printing top element "<<s.top()<<endl;
+    // cout<<"is it empty=="<<s.empty()<<endl;
+    // cout<<"size of stack"<<s.size();
+    mstack st(5);
+    st.push(22);
+    st.push(43);
+    st.push(44);
+    cout<<st.peek() <<endl;
+    st.pop();
+    cout<<st.peek()<<endl;
+    
+    
+    
+}
+
