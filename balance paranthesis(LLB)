@@ -1,0 +1,39 @@
+#include <stack>
+#include <string>
+
+bool isValidParenthesis(string expression)
+{
+    int n = expression.size();
+    stack<char> st;
+    
+    for (int i = 0; i < n; i++)
+    {
+        char s = expression[i];
+        
+        if (s == '{' || s == '[' || s == '(')
+        {
+            st.push(s);
+        }
+        else if (s == '}' || s == ']' || s == ')')
+        {
+            if (!st.empty())
+            {
+                char top = st.top();
+                st.pop();
+                if ((s == '}' && top == '{') || (s == ']' && top == '[') || (s == ')' && top == '('))
+                {
+                    continue;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+    
+    return st.empty();
