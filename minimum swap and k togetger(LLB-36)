@@ -1,0 +1,33 @@
+class Solution
+{
+public:
+    int minSwap(int arr[], int n, int k) {
+        int count=0,total=0;
+        for (int i=0;i<n;i++)
+        {
+           if (arr[i]<=k) total++; 
+        }
+        for (int i=0;i<total;i++)
+        {
+            if (arr[i]>k)
+            count++;
+        }
+        int i=0,j=total;
+        int mini=count;
+        
+        while(j<n)
+        {
+            if (arr[i]>k)
+            count--;
+            if (arr[j]>k)
+            count++;
+            mini=min(mini,count);
+            i++;
+            j++;
+            
+        }
+        
+        return mini;
+        
+    }
+};
