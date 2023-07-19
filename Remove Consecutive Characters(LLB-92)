@@ -1,0 +1,21 @@
+class Solution{
+    public:
+    string removeConsecutiveCharacter(string S)
+    {
+        int n=S.size();
+        string res="";
+        for (int i=0;i<n;i++){
+            // check array index out of bound
+            if (i<n-1 && S[i]==S[i+1])
+            
+            {
+                continue;
+            }
+            else
+            {
+            res+=S[i];
+            }
+        }
+        return res;
+    }
+};
