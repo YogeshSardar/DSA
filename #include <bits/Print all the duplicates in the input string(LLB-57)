@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void printdup(string S)
+{
+    map<char ,int >dup;
+    int n=S.size();
+    for (int i=0;i<n;i++)
+    {
+      dup[S[i]]++;
+    }
+    
+    
+    for (auto i :dup)
+    {
+        if (i.second >1)
+        {
+            cout<<"count of  "<<i.first <<" is "<<i.second<<endl;
+            
+        }
+    }
+}
+int main()
+{
+    string S="Yogeshsardarrrrr";
+    printdup(S);
+}
