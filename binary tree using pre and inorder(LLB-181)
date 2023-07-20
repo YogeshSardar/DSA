@@ -1,0 +1,44 @@
+class Solution{
+    public:
+    int pos(int in[],int element,int n)
+    {
+        for (int i=0;i<n;i++)
+        {
+            if(in[i]==element)
+            return i;
+        }
+        return -1;
+    }
+      
+    Node* Solve (int in[],int pre[],int index,int inorderstart,int inorderend ,int n)
+    {
+        // base case
+        if (index>=n || inorderstart>inorderend)
+        {
+            return NULL;
+            
+        }
+        
+        // 1st element of preorder
+        int element=pre[index++];
+        
+        // create new node
+        Node* root=new Node(element);
+        
+        // abb uss node ki pos find karo in inorder
+        int position=pos(in,element,n);
+        
+        
+        // recursive call
+        root->left=Solve(in,pre,index,inorderstart,position-1,n);
+        root->right=Solve(in,pre,index,position+1,inorderend,n);
+        return root;
+    }
+      
+    Node* buildTree(int in[],int pre[], int n)
+    {
+        int preorderIndex=0;
+        return  Solve(in,pre,preorderIndex,0,n-1,n);
+        
+    }
+};
