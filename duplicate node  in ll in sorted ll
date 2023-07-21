@@ -1,0 +1,32 @@
+Node * removeDuplicates(Node *head)
+{
+    // empty list
+    if (head==NULL)
+    {
+        return NULL;
+
+    }
+
+    // nonempty list
+
+    Node* curr=head;
+    while(curr!=NULL)
+    {
+    //  data comparision
+     if ((curr->next!=NULL) &&(curr->data==curr->next->data))
+     {
+         Node* next_next=curr->next->next;
+
+         Node* nodetodelete=curr->next;
+
+         delete (nodetodelete);
+         curr->next=next_next;
+
+     }   
+     else{
+         curr=curr->next;
+     }
+
+    }
+    return head;
+}
