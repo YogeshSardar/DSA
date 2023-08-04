@@ -1,0 +1,46 @@
+class Solution
+{
+    public:
+    Node* inpre(Node* root)
+    {
+        // ek left store karo p me and extreem right jao 
+        Node* p=root->left;
+    // and extreem right me ja rahe hai and p me store kar 
+    // rahe hai and reture  kar rahe hai.
+        while(p->right)p=p->right;
+        return p;
+        
+    }
+    Node* insuc(Node* root)
+    {
+        Node*p=root->right;
+        while(p->left)p=p->left;
+        return p;
+    }
+    void findPreSuc(Node* root, Node*& pre, Node*& suc, int key)
+    {
+        if (root==NULL) return ;
+        if (root->key==key)
+        {
+            if (root->left) 
+            {
+                pre=inpre(root);
+                
+            }
+            if (root->right) suc=insuc(root);
+            return ;
+        }
+        if(key>root->key)   //right ki taraf ja rahe ho
+        {
+            pre=root;
+            findPreSuc(root->right,pre,suc,key);
+        }
+        else if(key<root->key)   //left ki taraf ja rahe ho
+        {  
+            suc=root;
+            findPreSuc(root->left,pre,suc,key);
+        }
+        }
+        
+    
+};
