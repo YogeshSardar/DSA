@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        
+        // sliding window
+        set<char>set;
+        vector<int>dist;
+        int end=0;
+        int start=0;
+
+         int max=0;
+         while (start<s.size())
+         {
+             auto it=set.find(s[start]);  //'a'
+             if (it==set.end())
+             {
+                int len=start-end+1;
+                if (len>max)
+                max=len;
+                set.insert(s[start]);
+                start++;
+
+             }else
+             {
+                //  if the element is found 
+                set.erase(s[end]);
+                end++;
+             }
+
+         }
+
+return max;
+     
+         
+    }
+};
